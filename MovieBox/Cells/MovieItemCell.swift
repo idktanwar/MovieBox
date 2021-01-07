@@ -24,21 +24,6 @@ class MovieItemCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        contentView.layer.cornerRadius = 8
-//        contentView.layer.masksToBounds = true
-//        contentView.layer.borderColor = UIColor.darkGray.cgColor
-//        contentView.layer.borderWidth = 0.6
-//
-//        contentView.layer.shadowColor = UIColor.black.cgColor
-//        contentView.layer.shadowOpacity = 0.4
-//        contentView.layer.shadowOffset = .zero
-//        contentView.layer.shadowRadius = 2
-
-        
-//        self.layer.borderColor = UIColor.systemBlue.cgColor
-//        self.layer.borderWidth = 5
-//        self.layer.cornerRadius = 8.0
-        
         playBtn.backgroundColor = UIColor.lightBlue1
         playBtn.setTitleColor(.white, for: .normal)
         playBtn.layer.cornerRadius = 8.0

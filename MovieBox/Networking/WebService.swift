@@ -28,12 +28,6 @@ class WebService {
                 return
             }
             
-            guard let response = response as? HTTPURLResponse else {
-                // Handle Empty Response
-                return
-            }
-            print("status code: \(response.statusCode)")
-            
             guard let data = data else {
                 // Handle Empty Data
                 return
@@ -69,12 +63,6 @@ class WebService {
                 return
             }
             
-            guard let response = response as? HTTPURLResponse else {
-                // Handle Empty Response
-                return
-            }
-            print("status code: \(response.statusCode)")
-            
             guard let data = data else {
                 // Handle Empty Data
                 return
@@ -82,6 +70,123 @@ class WebService {
             
             DispatchQueue.main.async {
                 completion(.success(data))
+            }
+            
+        }
+        dataTask?.resume()
+    }
+    
+    
+    
+    func getCastData(forMovieId id: Int, completion: @escaping (Result<CastsData, Error>) -> Void)
+    {
+        let castDataURL = "https://api.themoviedb.org/3/movie/\(id)/credits?api_key=53e8379e33e80a5fa41a392d98e5a878&language=en-US"
+        
+        guard let url = URL(string: castDataURL) else {return}
+        
+        // Create URL Session - work on the background
+        dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            // Handle Error
+            if let error = error {
+                completion(.failure(error))
+                print("DataTask error: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let data = data else {
+                // Handle Empty Data
+                return
+            }
+            
+            do {
+                // Parse the data
+                let decoder = JSONDecoder()
+                let jsonData = try decoder.decode(CastsData.self, from: data)
+                
+                // Back to the main thread
+                DispatchQueue.main.async {
+                    completion(.success(jsonData))
+                }
+            } catch let error {
+                completion(.failure(error))
+            }
+            
+        }
+        dataTask?.resume()
+    }
+    
+    func getSimilarMoviesData(forMovieId id: Int, completion: @escaping (Result<RecommendedMoiveData, Error>) -> Void)
+    {
+        let castDataURL = "https://api.themoviedb.org/3/movie/\(id)/similar?api_key=53e8379e33e80a5fa41a392d98e5a878&language=en-US"
+        
+        guard let url = URL(string: castDataURL) else {return}
+        
+        // Create URL Session - work on the background
+        dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            // Handle Error
+            if let error = error {
+                completion(.failure(error))
+                print("DataTask error: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let data = data else {
+                // Handle Empty Data
+                return
+            }
+            
+            do {
+                // Parse the data
+                let decoder = JSONDecoder()
+                let jsonData = try decoder.decode(RecommendedMoiveData.self, from: data)
+                
+                // Back to the main thread
+                DispatchQueue.main.async {
+                    completion(.success(jsonData))
+                }
+            } catch let error {
+                completion(.failure(error))
+            }
+            
+        }
+        dataTask?.resume()
+    }
+    
+    
+    func getVideoData(forMovieId id: Int, completion: @escaping (Result<VideoData, Error>) -> Void)
+    {
+        let videoDataURL = "https://api.themoviedb.org/3/movie/\(id)/videos?api_key=53e8379e33e80a5fa41a392d98e5a878&language=en-US"
+        
+        guard let url = URL(string: videoDataURL) else {return}
+        
+        // Create URL Session - work on the background
+        dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            // Handle Error
+            if let error = error {
+                completion(.failure(error))
+                print("DataTask error: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let data = data else {
+                // Handle Empty Data
+                return
+            }
+            
+            do {
+                // Parse the data
+                let decoder = JSONDecoder()
+                let jsonData = try decoder.decode(VideoData.self, from: data)
+                
+                // Back to the main thread
+                DispatchQueue.main.async {
+                    completion(.success(jsonData))
+                }
+            } catch let error {
+                completion(.failure(error))
             }
             
         }

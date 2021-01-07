@@ -10,7 +10,10 @@ import UIKit
 
 class MovieDetailVC: UIViewController {
 
-    var selectedMovie: Movie?
+    var selectedMovie: Movie!
+    private var castVM = CastViewModel()
+    private var similarMovieVM = RecommondedMovieViewModel()
+//    private var videoVM = VideoViewModel()
 
     @IBOutlet weak var posterImg: UIImageView!
     @IBOutlet weak var lblMoviename: UILabel!
@@ -18,10 +21,9 @@ class MovieDetailVC: UIViewController {
     @IBOutlet weak var lblsinopsis: UILabel!
     @IBOutlet weak var lblReleaseDate: UILabel!
  
-    
     @IBOutlet weak var castCollectionView: UICollectionView!
     @IBOutlet weak var similarmvCollectionView: UICollectionView!
-    @IBOutlet weak var CrewCollectionView: UICollectionView!
+//    @IBOutlet weak var videoCollectionView: UICollectionView!
     
     
     override func viewDidLoad() {
@@ -36,10 +38,37 @@ class MovieDetailVC: UIViewController {
         self.lblLanguage.text = "Language: \(selectedMovie?.language ?? "Language: NA")"
         getDisplayImage()
         
-        castCollectionView.dataSource = self
         castCollectionView.delegate = self
-        
+        similarmvCollectionView.delegate = self
+//        videoCollectionView.delegate = self
+
+        fetchCastData()
+        fetchSimilarMoviesData()
+//        fetchVideoData()
     }
+    
+    
+    //MARK: Helper Methods
+    private func fetchCastData() {
+        castVM.fetchCastData(forMovieId: selectedMovie.id) { [weak self] in
+            self?.castCollectionView.dataSource = self
+            self?.castCollectionView.reloadData()
+        }
+    }
+    
+    private func fetchSimilarMoviesData() {
+        similarMovieVM.fetchSimilarMoviesData(forMovieId: selectedMovie.id) { [weak self] in
+            self?.similarmvCollectionView.dataSource = self
+            self?.similarmvCollectionView.reloadData()
+        }
+    }
+    
+//    private func fetchVideoData() {
+//        videoVM.fetchVideoData(forMovieId: selectedMovie.id) { [weak self] in
+//            self?.videoCollectionView.dataSource = self
+//            self?.videoCollectionView.reloadData()
+//        }
+//    }
     
     // MARK: - Get image data
     private func getDisplayImage(){
@@ -74,15 +103,34 @@ class MovieDetailVC: UIViewController {
 }
 
 extension  MovieDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        
+        if collectionView == self.castCollectionView {
+            return castVM.numberOfRowsInSection(section: section)
+        }
+        else {
+            return similarMovieVM.numberOfRowsInSection(section: section)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "castcell", for: indexPath)
-    
-        return cell
+        if collectionView == self.castCollectionView  {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "castcell", for: indexPath) as! CastCollectionCell
+
+            let cast = castVM.cellForRowAt(indexPath: indexPath)
+            cell.setCellWithValuesOf(cast)
+            cell.updateConstraintsIfNeeded()
+            return cell
+        }
+        else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "similarcell", for: indexPath) as! SimilarMovieCell
+            let movie = similarMovieVM.cellForRowAt(indexPath: indexPath)
+            cell.setCellWithValuesOf(movie)
+            cell.updateConstraintsIfNeeded()
+            return cell
+        }
     }
 
 }
