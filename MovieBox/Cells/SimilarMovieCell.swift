@@ -17,6 +17,9 @@ class SimilarMovieCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        posterImage.layer.cornerRadius = 8.0
+        posterImage.layer.borderColor = UIColor.black.cgColor
+        posterImage.layer.borderWidth = 1.0
     }
     
     func setCellWithValuesOf(_ movie: KindMovie) {

@@ -39,4 +39,8 @@ class CastViewModel {
     func cellForRowAt (indexPath: IndexPath) -> Cast {
         return castlists[indexPath.row]
     }
+    
+    var total: Int {
+           return castlists.count
+    }
 }

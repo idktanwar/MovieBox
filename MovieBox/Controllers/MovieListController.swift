@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import AVKit
 
-class MovieListController: UIViewController {
+class MovieListController: UIViewController, videoPlayDelegate {
     
     //    @IBOutlet weak var searchContainerView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
     var searchContoller: UISearchController!
     private var viewModel = MovieViewModel()
+    private var videoVM = VideoViewModel()
     var test: String = ""
     
     override func viewDidLoad() {
@@ -47,33 +49,35 @@ class MovieListController: UIViewController {
             self?.tableView.reloadData()
         }
     }
+    
+    func playvideo(atCell: Int) {
+        let indexpath = IndexPath(row: atCell, section: 0)
+        let movie = viewModel.cellForRowAt(indexPath: indexpath)
+
+        videoVM.fetchVideoData(forMovieId: movie.id) { [weak self] in
+            //get the first video for playing
+            let video = self?.videoVM.cellForRowAt(indexPath: IndexPath(row: 0, section: 0))
+            let key  = video?.key ?? "NA"
+            if key == "NA" {
+                //show alert of no video available
+            }
+            else {
+                var urlString = "https://www.youtube.com/watch?v="+key
+                urlString = urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+                
+                guard let videoURL = URL(string: urlString) else {return}
+                let video = AVPlayer(url: videoURL)
+                let videoPlayer = AVPlayerViewController()
+                videoPlayer.player = video
+                self!.present(videoPlayer, animated:true, completion: {
+                       video.play()
+                })
+            }
+            
+        }
+    }
+    
 }
-
-    //extension ViewController: UISearchResultsUpdating {
-    //    func updateSearchResults(for searchController: UISearchController) {
-    //        if let searchText = searchController.searchBar.text {
-    //            filterMovieList(withSearchText: searchText)
-    //        }
-    //    }
-    //
-    //}
-    //
-    //extension ViewController: UISearchBarDelegate {
-    //    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-    //        searchContoller.isActive = false
-    //        if let searchText = searchBar.text, !searchText.isEmpty {
-    //            restoreMovieList()
-    //        }
-    //    }
-    //
-    //    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    //        searchContoller.isActive = false
-    //        if let searchText = searchBar.text {
-    //            filterMovieList(withSearchText: searchText)
-    //        }
-    //    }
-    //}
-
 
 //Implement pagination after the basic view
 extension MovieListController: UITableViewDelegate, UITableViewDataSource {
@@ -87,7 +91,8 @@ extension MovieListController: UITableViewDelegate, UITableViewDataSource {
         
         let movie = viewModel.cellForRowAt(indexPath: indexPath)
         cell.setCellWithValuesOf(movie)
-
+        cell.playBtn.tag = indexPath.row
+        cell.delegate = self
         cell.updateConstraintsIfNeeded()
         return cell
     }

@@ -15,3 +15,4 @@ extension UIColor {
     
     static let lightBlue1 = UIColor.rgb(red: 29, green: 161, blue: 242)
 }
+

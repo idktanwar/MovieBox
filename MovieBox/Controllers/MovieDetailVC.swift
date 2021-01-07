@@ -13,17 +13,17 @@ class MovieDetailVC: UIViewController {
     var selectedMovie: Movie!
     private var castVM = CastViewModel()
     private var similarMovieVM = RecommondedMovieViewModel()
-//    private var videoVM = VideoViewModel()
 
     @IBOutlet weak var posterImg: UIImageView!
     @IBOutlet weak var lblMoviename: UILabel!
     @IBOutlet weak var lblLanguage: UILabel!
     @IBOutlet weak var lblsinopsis: UILabel!
     @IBOutlet weak var lblReleaseDate: UILabel!
- 
+    @IBOutlet weak var lblCast: UILabel!
+    @IBOutlet weak var lblSimilarMovie: UILabel!
+    
     @IBOutlet weak var castCollectionView: UICollectionView!
     @IBOutlet weak var similarmvCollectionView: UICollectionView!
-//    @IBOutlet weak var videoCollectionView: UICollectionView!
     
     
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class MovieDetailVC: UIViewController {
     }
     
     func setupUI() {
-        self.title = "MovieBox"
+        self.title = "Explore"
         self.lblMoviename.text = selectedMovie?.title
         self.lblReleaseDate.text = selectedMovie?.year
         self.lblLanguage.text = "Language: \(selectedMovie?.language ?? "Language: NA")"
@@ -40,17 +40,17 @@ class MovieDetailVC: UIViewController {
         
         castCollectionView.delegate = self
         similarmvCollectionView.delegate = self
-//        videoCollectionView.delegate = self
 
         fetchCastData()
         fetchSimilarMoviesData()
-//        fetchVideoData()
     }
-    
     
     //MARK: Helper Methods
     private func fetchCastData() {
         castVM.fetchCastData(forMovieId: selectedMovie.id) { [weak self] in
+            if self?.castVM.total == 0 {
+                self?.lblCast.isHidden = true
+            }
             self?.castCollectionView.dataSource = self
             self?.castCollectionView.reloadData()
         }
@@ -58,17 +58,13 @@ class MovieDetailVC: UIViewController {
     
     private func fetchSimilarMoviesData() {
         similarMovieVM.fetchSimilarMoviesData(forMovieId: selectedMovie.id) { [weak self] in
+            if self?.similarMovieVM.total == 0 {
+                self?.lblSimilarMovie.isHidden = true
+            }
             self?.similarmvCollectionView.dataSource = self
             self?.similarmvCollectionView.reloadData()
         }
     }
-    
-//    private func fetchVideoData() {
-//        videoVM.fetchVideoData(forMovieId: selectedMovie.id) { [weak self] in
-//            self?.videoCollectionView.dataSource = self
-//            self?.videoCollectionView.reloadData()
-//        }
-//    }
     
     // MARK: - Get image data
     private func getDisplayImage(){

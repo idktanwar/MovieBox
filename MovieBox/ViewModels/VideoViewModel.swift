@@ -36,7 +36,7 @@ class VideoViewModel {
         return 0
     }
     
-    func cellForRowAt (indexPath: IndexPath) -> Video {
+    func cellForRowAt(indexPath: IndexPath) -> Video {
         return videos[indexPath.row]
     }
 }

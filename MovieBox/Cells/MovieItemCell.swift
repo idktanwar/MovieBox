@@ -10,7 +10,6 @@ import UIKit
 
 class MovieItemCell: UITableViewCell {
 
-    @IBOutlet weak var CellView: UIView!
     @IBOutlet weak var lblMovieName: UILabel!
     @IBOutlet weak var lblReleaseDate: UILabel!
     @IBOutlet weak var moviePoster: UIImageView!
@@ -20,6 +19,7 @@ class MovieItemCell: UITableViewCell {
     @IBOutlet weak var lblMovieOverview: UILabel!
     
     private var urlString: String = ""
+    weak var delegate: videoPlayDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,8 +36,8 @@ class MovieItemCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    @IBAction func PlayButtonPressed(_ sender: Any) {
-        
+    @IBAction func PlayButtonPressed(_ sender: UIButton) {
+        delegate?.playvideo(atCell: sender.tag)
     }
     
     // Setup movies values

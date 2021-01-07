@@ -39,4 +39,8 @@ class RecommondedMovieViewModel {
     func cellForRowAt (indexPath: IndexPath) -> KindMovie {
         return recommonedMoviesList[indexPath.row]
     }
+    
+    var total: Int {
+        return recommonedMoviesList.count
+    }
 }

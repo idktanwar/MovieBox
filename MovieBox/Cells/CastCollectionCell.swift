@@ -17,6 +17,9 @@ class CastCollectionCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        prfileImgView.layer.cornerRadius = 8.0
+        prfileImgView.layer.borderColor = UIColor.black.cgColor
+        prfileImgView.layer.borderWidth = 1.0
     }
     
     func setCellWithValuesOf(_ cast: Cast) {
