@@ -138,7 +138,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7IM-hq-Jpc"/>
                     </view>
-                    <navigationItem key="navigationItem" title="MovieBox" id="3GH-ti-T6h"/>
+                    <navigationItem key="navigationItem" title="MovieBox" id="3GH-ti-T6h">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="9On-A1-2Kh"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="l2d-c3-stI" id="GTC-6f-dH3"/>
                     </connections>

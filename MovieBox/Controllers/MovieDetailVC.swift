@@ -34,7 +34,7 @@ class MovieDetailVC: UIViewController {
     func setupUI() {
         self.title = "Explore"
         self.lblMoviename.text = selectedMovie?.title
-        self.lblReleaseDate.text = selectedMovie?.year
+        self.lblReleaseDate.text = Helper.app.convertDateFormater(selectedMovie?.year) 
         self.lblLanguage.text = "Language: \(selectedMovie?.language ?? "Language: NA")"
         getDisplayImage()
         
