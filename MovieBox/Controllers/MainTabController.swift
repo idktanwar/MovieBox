@@ -25,11 +25,13 @@ class MainTabController: UITabBarController {
         
         for viewcontroller in viewcontrollers {
             if let movieNavConctroller = viewcontroller as? MovieItemNavigationController {
-                if let movieItemController = movieNavConctroller.viewControllers.first as? ViewController {
+                if let movieItemController = movieNavConctroller.viewControllers.first as? MovieListController {
                     movieItemController.title = "Movie Shows"
                 }
             }
         }
     }
+    
+
     
 }
