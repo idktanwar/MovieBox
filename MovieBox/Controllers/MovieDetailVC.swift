@@ -18,6 +18,12 @@ class MovieDetailVC: UIViewController {
     @IBOutlet weak var lblsinopsis: UILabel!
     @IBOutlet weak var lblReleaseDate: UILabel!
  
+    
+    @IBOutlet weak var castCollectionView: UICollectionView!
+    @IBOutlet weak var similarmvCollectionView: UICollectionView!
+    @IBOutlet weak var CrewCollectionView: UICollectionView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -29,8 +35,11 @@ class MovieDetailVC: UIViewController {
         self.lblReleaseDate.text = selectedMovie?.year
         self.lblLanguage.text = "Language: \(selectedMovie?.language ?? "Language: NA")"
         getDisplayImage()
+        
+        castCollectionView.dataSource = self
+        castCollectionView.delegate = self
+        
     }
-
     
     // MARK: - Get image data
     private func getDisplayImage(){
@@ -63,3 +72,19 @@ class MovieDetailVC: UIViewController {
     }
     
 }
+
+extension  MovieDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "castcell", for: indexPath)
+    
+        return cell
+    }
+
+}
+
+

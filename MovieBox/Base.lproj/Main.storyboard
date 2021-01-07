@@ -272,21 +272,21 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="8HK-LX-RnF"/>
                                                 </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lzM-VW-FL6">
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lzM-VW-FL6">
                                                     <size key="itemSize" width="172" height="200"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="863-EL-rDE">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="CastCollectionCell" reuseIdentifier="castcell" id="863-EL-rDE" customClass="CastCollectionCell" customModule="MovieBox" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="172" height="200"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lhA-cp-oic">
                                                             <rect key="frame" x="0.0" y="0.0" width="172" height="200"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xb0-Mc-T1E">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImageAvailable" translatesAutoresizingMaskIntoConstraints="NO" id="Xb0-Mc-T1E">
                                                                     <rect key="frame" x="10" y="10" width="152" height="150"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="150" id="e2Q-IQ-GmW"/>
@@ -319,21 +319,21 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="O83-A2-CPN"/>
                                                 </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jAc-S9-C5V">
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jAc-S9-C5V">
                                                     <size key="itemSize" width="172" height="200"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9xk-yL-V3w">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="CrewCollectionCell" id="9xk-yL-V3w" customClass="CrewCollectionCell" customModule="MovieBox" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="172" height="200"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="GVa-Qy-HaH">
                                                             <rect key="frame" x="0.0" y="0.0" width="172" height="200"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wbG-Wv-LkK">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImageAvailable" translatesAutoresizingMaskIntoConstraints="NO" id="wbG-Wv-LkK">
                                                                     <rect key="frame" x="10" y="10" width="152" height="150"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="150" id="IUc-PC-Wf2"/>
@@ -369,21 +369,21 @@
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kFg-21-GSF">
                                                 <rect key="frame" x="10" y="1019" width="394" height="171"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eCP-nv-1jc">
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eCP-nv-1jc">
                                                     <size key="itemSize" width="172" height="200"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="kqi-cG-WDb">
-                                                        <rect key="frame" x="0.0" y="0.0" width="172" height="200"/>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="SimilarMovieCell" reuseIdentifier="similarcell" id="kqi-cG-WDb" customClass="SimilarMovieCell" customModule="MovieBox" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="-14.5" width="172" height="200"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="4ix-gg-sHq">
                                                             <rect key="frame" x="0.0" y="0.0" width="172" height="200"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ffn-Kx-DQd">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImageAvailable" translatesAutoresizingMaskIntoConstraints="NO" id="Ffn-Kx-DQd">
                                                                     <rect key="frame" x="10" y="10" width="152" height="150"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="150" id="aep-Nj-msD"/>
@@ -481,11 +481,14 @@
                     <navigationItem key="navigationItem" id="9SX-ZW-fg3"/>
                     <size key="freeformSize" width="414" height="1300"/>
                     <connections>
+                        <outlet property="CrewCollectionView" destination="UGi-sf-dbC" id="ro8-56-qpH"/>
+                        <outlet property="castCollectionView" destination="GXK-Pw-Ift" id="cJo-kh-bVA"/>
                         <outlet property="lblLanguage" destination="CVr-8G-Ksb" id="29z-l6-DEH"/>
                         <outlet property="lblMoviename" destination="0sH-nW-CrI" id="BFq-FQ-pt7"/>
                         <outlet property="lblReleaseDate" destination="10Y-6x-dWh" id="T40-0Q-Bgc"/>
                         <outlet property="lblsinopsis" destination="Zkg-sh-vVW" id="3QC-Vl-4oT"/>
                         <outlet property="posterImg" destination="hpR-aF-eU4" id="EIC-HO-WtQ"/>
+                        <outlet property="similarmvCollectionView" destination="kFg-21-GSF" id="e0Z-Yd-f4g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="56h-YS-QZj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
