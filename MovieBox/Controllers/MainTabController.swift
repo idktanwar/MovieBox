@@ -29,6 +29,11 @@ class MainTabController: UITabBarController {
                     movieItemController.title = "MovieBox"
                 }
             }
+            else if let searchNavConctroller = viewcontroller as? SearchVCNavController {
+                if let searchVCController = searchNavConctroller.viewControllers.first as? SearchViewController {
+                    searchVCController.title = "Search"
+                }
+            }
         }
     }
     

@@ -11,7 +11,7 @@
         <!--Search-->
         <scene sceneID="tWu-cO-UeI">
             <objects>
-                <viewController id="RMl-77-0Dk" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RMl-77-0Dk" customClass="SearchViewController" customModule="MovieBox" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lSZ-Bc-kwA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -439,7 +439,7 @@
         <!--Search-->
         <scene sceneID="dV6-hC-Mmz">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WJU-W0-65i" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SearchVCNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WJU-W0-65i" customClass="SearchVCNavController" customModule="MovieBox" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="aOq-6P-esN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wmQ-VH-bz8">

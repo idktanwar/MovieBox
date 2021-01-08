@@ -33,6 +33,8 @@
 		98467D0325A744EA002AF9CC /* Videos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98467D0225A744EA002AF9CC /* Videos.swift */; };
 		98467D0525A745E2002AF9CC /* RecommondedMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98467D0425A745E2002AF9CC /* RecommondedMovieViewModel.swift */; };
 		98467D0725A745F5002AF9CC /* VideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98467D0625A745F5002AF9CC /* VideoViewModel.swift */; };
+		98B23DE625A82270002C18B4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B23DE525A82270002C18B4 /* SearchViewController.swift */; };
+		98B23DE825A82294002C18B4 /* SearchVCNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B23DE725A82294002C18B4 /* SearchVCNavController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,8 @@
 		98467D0225A744EA002AF9CC /* Videos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Videos.swift; sourceTree = "<group>"; };
 		98467D0425A745E2002AF9CC /* RecommondedMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommondedMovieViewModel.swift; sourceTree = "<group>"; };
 		98467D0625A745F5002AF9CC /* VideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewModel.swift; sourceTree = "<group>"; };
+		98B23DE525A82270002C18B4 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		98B23DE725A82294002C18B4 /* SearchVCNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVCNavController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +175,8 @@
 				98467CEC25A6F841002AF9CC /* MovieItemNavigationController.swift */,
 				98467CEE25A6FD64002AF9CC /* MovieListController.swift */,
 				98467CF025A71111002AF9CC /* MovieDetailVC.swift */,
+				98B23DE525A82270002C18B4 /* SearchViewController.swift */,
+				98B23DE725A82294002C18B4 /* SearchVCNavController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -254,6 +260,7 @@
 				98467D0725A745F5002AF9CC /* VideoViewModel.swift in Sources */,
 				981AB6CD25A815BB00E98CAF /* Protocol.swift in Sources */,
 				98467D0325A744EA002AF9CC /* Videos.swift in Sources */,
+				98B23DE825A82294002C18B4 /* SearchVCNavController.swift in Sources */,
 				98467CE325A62D1F002AF9CC /* Extensions.swift in Sources */,
 				98467CE925A6D155002AF9CC /* MovieViewModel.swift in Sources */,
 				98467D0525A745E2002AF9CC /* RecommondedMovieViewModel.swift in Sources */,
@@ -264,6 +271,7 @@
 				98467CEB25A6DC27002AF9CC /* MainTabController.swift in Sources */,
 				98467CC625A5F855002AF9CC /* AppDelegate.swift in Sources */,
 				98467D0125A744DC002AF9CC /* RecommondedMovies.swift in Sources */,
+				98B23DE625A82270002C18B4 /* SearchViewController.swift in Sources */,
 				98467CED25A6F841002AF9CC /* MovieItemNavigationController.swift in Sources */,
 				98467CFD25A73761002AF9CC /* CastViewModel.swift in Sources */,
 				98467CDE25A601BE002AF9CC /* WebService.swift in Sources */,
