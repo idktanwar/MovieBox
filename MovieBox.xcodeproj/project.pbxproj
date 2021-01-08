@@ -175,8 +175,8 @@
 				98467CEC25A6F841002AF9CC /* MovieItemNavigationController.swift */,
 				98467CEE25A6FD64002AF9CC /* MovieListController.swift */,
 				98467CF025A71111002AF9CC /* MovieDetailVC.swift */,
-				98B23DE525A82270002C18B4 /* SearchViewController.swift */,
 				98B23DE725A82294002C18B4 /* SearchVCNavController.swift */,
+				98B23DE525A82270002C18B4 /* SearchViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

@@ -192,4 +192,44 @@ class WebService {
         }
         dataTask?.resume()
     }
+    
+    
+    
+    func searchMovie(withquery query: String, completion: @escaping (Result<MoviesData, Error>) -> Void) {
+        
+        let searchMoviesURL = "https://api.themoviedb.org/3/search/movie?api_key=\(TMDB_API_KEY)&language=en-US&query=\(query)&region=US"
+        
+        guard let url = URL(string: searchMoviesURL) else {return}
+        
+        // Create URL Session - work on the background
+        dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            // Handle Error
+            if let error = error {
+                completion(.failure(error))
+                print("DataTask error: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let data = data else {
+                // Handle Empty Data
+                return
+            }
+            
+            do {
+                // Parse the data
+                let decoder = JSONDecoder()
+                let jsonData = try decoder.decode(MoviesData.self, from: data)
+                
+                // Back to the main thread
+                DispatchQueue.main.async {
+                    completion(.success(jsonData))
+                }
+            } catch let error {
+                completion(.failure(error))
+            }
+            
+        }
+        dataTask?.resume()
+    }
 }

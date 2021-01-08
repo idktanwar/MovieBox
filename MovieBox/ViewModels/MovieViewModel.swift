@@ -30,6 +30,22 @@ class MovieViewModel {
         }
     }
     
+    func searchMovie(withQuery query: String, completion: @escaping () -> ()) {
+        // weak self - prevent retain cycles
+        apiService.searchMovie(withquery: query) {
+            [weak self] (result) in
+            
+            switch result {
+            case .success(let listOf):
+                self?.newMovies = listOf.movies
+                completion()
+            case .failure(let error):
+                // Something is wrong with the JSON
+                print("Error processing json data: \(error)")
+            }
+        }
+    }
+    
     func numberOfRowsInSection(section: Int) -> Int {
         if newMovies.count != 0 {
             return newMovies.count
