@@ -14,7 +14,7 @@ class WebService {
 
     func getNewMoviesData(withoffset offset: Int , limit: Int, completion: @escaping (Result<MoviesData, Error>) -> Void) {
         
-        let newMoviesURL = "https://api.themoviedb.org/3/movie/popular?api_key=53e8379e33e80a5fa41a392d98e5a878&language=en-US&page=\(limit)"
+        let newMoviesURL = "https://api.themoviedb.org/3/movie/popular?api_key=\(TMDB_API_KEY)&language=en-US&page=\(limit)"
         
         guard let url = URL(string: newMoviesURL) else {return}
         
@@ -80,7 +80,7 @@ class WebService {
     
     func getCastData(forMovieId id: Int, completion: @escaping (Result<CastsData, Error>) -> Void)
     {
-        let castDataURL = "https://api.themoviedb.org/3/movie/\(id)/credits?api_key=53e8379e33e80a5fa41a392d98e5a878&language=en-US"
+        let castDataURL = "https://api.themoviedb.org/3/movie/\(id)/credits?api_key=\(TMDB_API_KEY)&language=en-US"
         
         guard let url = URL(string: castDataURL) else {return}
         
@@ -118,7 +118,7 @@ class WebService {
     
     func getSimilarMoviesData(forMovieId id: Int, completion: @escaping (Result<RecommendedMoiveData, Error>) -> Void)
     {
-        let castDataURL = "https://api.themoviedb.org/3/movie/\(id)/similar?api_key=53e8379e33e80a5fa41a392d98e5a878&language=en-US"
+        let castDataURL = "https://api.themoviedb.org/3/movie/\(id)/similar?api_key=\(TMDB_API_KEY)&language=en-US"
         
         guard let url = URL(string: castDataURL) else {return}
         
@@ -157,7 +157,7 @@ class WebService {
     
     func getVideoData(forMovieId id: Int, completion: @escaping (Result<VideoData, Error>) -> Void)
     {
-        let videoDataURL = "https://api.themoviedb.org/3/movie/\(id)/videos?api_key=53e8379e33e80a5fa41a392d98e5a878&language=en-US"
+        let videoDataURL = "https://api.themoviedb.org/3/movie/\(id)/videos?api_key=\(TMDB_API_KEY)&language=en-US"
         
         guard let url = URL(string: videoDataURL) else {return}
         

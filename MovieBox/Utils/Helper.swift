@@ -28,15 +28,12 @@ class Helper {
         return fixDate
     }
 
-    static func showAlertMessage(vc: UIViewController, titleStr:String, messageStr:String) -> Void {
-//        let alert = UIAlertController(title: titleStr, message: messageStr, preferredStyle: .default);
-//        vc.presentViewController(alert, animated: true, completion: nil)
+    func showAlertMessage(vc: UIViewController, titleStr:String, messageStr:String) -> Void {
+        let alert = UIAlertController(title: titleStr, message: messageStr, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
+        vc.present(alert, animated: true, completion: nil)
     }
 }
 
-
-protocol videoPlayDelegate: class {
-    func playvideo(atCell: Int)
-}
 
 

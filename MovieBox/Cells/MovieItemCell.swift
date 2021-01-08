@@ -10,6 +10,8 @@ import UIKit
 
 class MovieItemCell: UITableViewCell {
 
+    //MARK: Properties
+    
     @IBOutlet weak var lblMovieName: UILabel!
     @IBOutlet weak var lblReleaseDate: UILabel!
     @IBOutlet weak var moviePoster: UIImageView!
@@ -21,6 +23,8 @@ class MovieItemCell: UITableViewCell {
     private var urlString: String = ""
     weak var delegate: videoPlayDelegate?
 
+    //MARK: Methods
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -68,7 +72,8 @@ class MovieItemCell: UITableViewCell {
         
     }
     
-    // MARK: - Get image data
+    // MARK: - Web Service Call
+
     private func getImageDataFrom(url: URL) {
         WebService().getImageDataFrom(url: url) { [weak self] (result) in
             switch result {

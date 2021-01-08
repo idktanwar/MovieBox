@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		981AB6CB25A814F800E98CAF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981AB6CA25A814F800E98CAF /* Constants.swift */; };
+		981AB6CD25A815BB00E98CAF /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981AB6CC25A815BB00E98CAF /* Protocol.swift */; };
 		98467CC625A5F855002AF9CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98467CC525A5F855002AF9CC /* AppDelegate.swift */; };
 		98467CC825A5F855002AF9CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98467CC725A5F855002AF9CC /* SceneDelegate.swift */; };
 		98467CCD25A5F855002AF9CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98467CCB25A5F855002AF9CC /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		981AB6CA25A814F800E98CAF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		981AB6CC25A815BB00E98CAF /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		98467CC225A5F855002AF9CC /* MovieBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98467CC525A5F855002AF9CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98467CC725A5F855002AF9CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +139,8 @@
 			children = (
 				98467CE225A62D1F002AF9CC /* Extensions.swift */,
 				98467CF825A725CA002AF9CC /* Helper.swift */,
+				981AB6CA25A814F800E98CAF /* Constants.swift */,
+				981AB6CC25A815BB00E98CAF /* Protocol.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -241,10 +247,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				98467CE525A6CA84002AF9CC /* Movies.swift in Sources */,
+				981AB6CB25A814F800E98CAF /* Constants.swift in Sources */,
 				98467CF725A720F4002AF9CC /* SimilarMovieCell.swift in Sources */,
 				98467CF925A725CA002AF9CC /* Helper.swift in Sources */,
 				98467CFB25A7367C002AF9CC /* Casts.swift in Sources */,
 				98467D0725A745F5002AF9CC /* VideoViewModel.swift in Sources */,
+				981AB6CD25A815BB00E98CAF /* Protocol.swift in Sources */,
 				98467D0325A744EA002AF9CC /* Videos.swift in Sources */,
 				98467CE325A62D1F002AF9CC /* Extensions.swift in Sources */,
 				98467CE925A6D155002AF9CC /* MovieViewModel.swift in Sources */,

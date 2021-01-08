@@ -10,10 +10,14 @@ import UIKit
 
 class SimilarMovieCell: UICollectionViewCell {
     
+    //MARK: Properties
+
     @IBOutlet weak var posterImage: UIImageView!
     @IBOutlet weak var lblMoviename: UILabel!
     
     private var urlString: String = ""
+
+    //MARK: Methods
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,7 +43,8 @@ class SimilarMovieCell: UICollectionViewCell {
         
     }
     
-    // MARK: - Get image data
+    // MARK: - Web Service Call
+
     private func getImageDataFrom(url: URL) {
         WebService().getImageDataFrom(url: url) { [weak self] (result) in
             switch result {

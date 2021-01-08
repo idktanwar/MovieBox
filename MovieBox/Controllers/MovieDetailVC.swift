@@ -10,6 +10,8 @@ import UIKit
 
 class MovieDetailVC: UIViewController {
 
+    //MARK: Properties
+    
     var selectedMovie: Movie!
     private var castVM = CastViewModel()
     private var similarMovieVM = RecommondedMovieViewModel()
@@ -25,6 +27,7 @@ class MovieDetailVC: UIViewController {
     @IBOutlet weak var castCollectionView: UICollectionView!
     @IBOutlet weak var similarmvCollectionView: UICollectionView!
     
+    //MARK: Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +69,8 @@ class MovieDetailVC: UIViewController {
         }
     }
     
-    // MARK: - Get image data
+    // MARK: - Web Service Call
+    
     private func getDisplayImage(){
         guard let posterString = selectedMovie?.posterImage else {return}
         let urlString = "https://image.tmdb.org/t/p/w300" + posterString
@@ -97,6 +101,8 @@ class MovieDetailVC: UIViewController {
     }
     
 }
+
+//MARK: Tableview Delegate & DataSource
 
 extension  MovieDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
     

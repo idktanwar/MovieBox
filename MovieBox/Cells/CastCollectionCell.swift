@@ -10,10 +10,14 @@ import UIKit
 
 class CastCollectionCell: UICollectionViewCell {
     
+    //MARK: Properties
+
     @IBOutlet weak var prfileImgView: UIImageView!
     @IBOutlet weak var lblCastname: UILabel!
     
     private var urlString: String = ""
+
+    //MARK: Methods
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,7 +43,8 @@ class CastCollectionCell: UICollectionViewCell {
         
     }
     
-    // MARK: - Get image data
+    // MARK: - Web Service Call
+
     private func getImageDataFrom(url: URL) {
         WebService().getImageDataFrom(url: url) { [weak self] (result) in
             switch result {

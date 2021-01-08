@@ -12,6 +12,7 @@ import AVKit
 class MovieListController: UIViewController, videoPlayDelegate {
     
     //MARK: Properties
+    
     @IBOutlet weak var tableView: UITableView!
     
     var searchContoller: UISearchController!
@@ -26,6 +27,7 @@ class MovieListController: UIViewController, videoPlayDelegate {
     var didEndReached:Bool=false
     
     //MARK: Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
