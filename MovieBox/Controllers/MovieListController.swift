@@ -46,9 +46,9 @@ class MovieListController: UIViewController, videoPlayDelegate {
         let logo = UIImage(named: "logo")
         let imageView = UIImageView(image: logo)
         imageView.contentMode = .scaleAspectFit
-        //        self.navigationItem.titleView = imageView
-        self.navigationController?.navigationBar.barTintColor = UIColor.lightBlue1
-        self.navigationItem.title = "MovieBox"
+                self.navigationItem.titleView = imageView
+//        self.navigationController?.navigationBar.barTintColor =
+//        self.navigationItem.title = "MovieBox"
         
     }
     
