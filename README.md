@@ -14,6 +14,7 @@
 
 ### Set the API key
 To retrieve a key follow instructions https://developers.themoviedb.org/3/getting-started/authentication
+"replace your TMDB api key with TMDB_API_KEY "keyword" in project file"
   
 ### Call API
 
