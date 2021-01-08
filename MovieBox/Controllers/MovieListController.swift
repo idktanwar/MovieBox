@@ -11,20 +11,27 @@ import AVKit
 
 class MovieListController: UIViewController, videoPlayDelegate {
     
-    //    @IBOutlet weak var searchContainerView: UIView!
+    //MARK: Properties
     @IBOutlet weak var tableView: UITableView!
     
     var searchContoller: UISearchController!
     private var viewModel = MovieViewModel()
     private var videoVM = VideoViewModel()
     var test: String = ""
+    //For Pagination
+    var isDataLoading:Bool=false
+    var pageNo:Int=1
+    var limit:Int=20
+    var offset:Int=0 //pageNo*limit
+    var didEndReached:Bool=false
     
+    //MARK: Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         
         //get movie data
-        loadNewMoviesData()
+        loadNewMoviesData(withOffset: offset, limit: pageNo)
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -43,9 +50,14 @@ class MovieListController: UIViewController, videoPlayDelegate {
         
     }
     
-    private func loadNewMoviesData() {
-        viewModel.fetchNewMoviesData { [weak self] in
+    private func loadNewMoviesData(withOffset offset: Int, limit: Int) {
+        viewModel.fetchNewMoviesData(withoffset: offset, limit: limit) { [weak self] in
             self?.tableView.dataSource = self
+            //just to move focus to 1st row after for next page
+            self?.tableView.setContentOffset(CGPoint.zero, animated: false)
+            self?.tableView.reloadData()
+            self?.tableView.layoutIfNeeded()
+            self?.tableView.setContentOffset(CGPoint.zero, animated: false)
             self?.tableView.reloadData()
         }
     }
@@ -111,4 +123,34 @@ extension MovieListController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension MovieListController: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        print("scrollViewWillBeginDragging")
+        isDataLoading = false
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        print("scrollViewDidEndDecelerating")
+    }
+    
+    //Pagination
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+
+            print("scrollViewDidEndDragging")
+            if ((tableView.contentOffset.y + tableView.frame.size.height) >= tableView.contentSize.height)
+            {
+                if !isDataLoading{
+                    isDataLoading = true
+                    self.pageNo = self.pageNo+1
+                    self.limit = self.limit+20
+                    self.offset = self.limit * self.pageNo
+                    self.loadNewMoviesData(withOffset: self.offset, limit: pageNo)
+
+                }
+            }
+
+
+    }
+
+}
 

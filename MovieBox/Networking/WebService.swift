@@ -12,9 +12,9 @@ class WebService {
     
     private var dataTask: URLSessionDataTask?
 
-    func getNewMoviesData(completion: @escaping (Result<MoviesData, Error>) -> Void) {
+    func getNewMoviesData(withoffset offset: Int , limit: Int, completion: @escaping (Result<MoviesData, Error>) -> Void) {
         
-        let newMoviesURL = "https://api.themoviedb.org/3/movie/popular?api_key=53e8379e33e80a5fa41a392d98e5a878&language=en-US&page=1"
+        let newMoviesURL = "https://api.themoviedb.org/3/movie/popular?api_key=53e8379e33e80a5fa41a392d98e5a878&language=en-US&page=\(limit)"
         
         guard let url = URL(string: newMoviesURL) else {return}
         

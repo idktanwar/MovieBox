@@ -13,17 +13,18 @@ class MovieViewModel {
     private var apiService = WebService()
     private var newMovies = [Movie]()
     
-    func fetchNewMoviesData(completion: @escaping () -> ()) {
+    func fetchNewMoviesData(withoffset offset: Int, limit: Int, completion: @escaping () -> ()) {
         
         // weak self - prevent retain cycles
-        apiService.getNewMoviesData { [weak self] (result) in
+        apiService.getNewMoviesData(withoffset: offset, limit: limit) {
+            [weak self] (result) in
             
             switch result {
             case .success(let listOf):
                 self?.newMovies = listOf.movies
                 completion()
             case .failure(let error):
-                // Something is wrong with the JSON 
+                // Something is wrong with the JSON
                 print("Error processing json data: \(error)")
             }
         }
