@@ -92,6 +92,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let movie = movieVM.cellForRowAt(indexPath: indexPath)
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MovieDetailVC") as! MovieDetailVC
         viewController.selectedMovie = movie
+        viewController.movieID = movie.id
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

@@ -43,4 +43,5 @@ class CastViewModel {
     var total: Int {
            return castlists.count
     }
+    
 }

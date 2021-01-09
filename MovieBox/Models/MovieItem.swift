@@ -1,22 +1,14 @@
 //
-//  Movies.swift
+//  MovieItem.swift
 //  MovieBox
 //
-//  Created by Dinesh Tanwar on 07/01/21.
+//  Created by Dinesh Tanwar on 09/01/21.
 //  Copyright © 2021 Dinesh Tanwar. All rights reserved.
 //
 
 import Foundation
 
-struct MoviesData: Decodable {
-    let movies: [Movie]
-    
-    private enum CodingKeys: String, CodingKey {
-        case movies = "results"
-    }
-}
-
-struct Movie: Decodable {
+struct MovieItem: Decodable {
     let id: Int
     let title: String?
     let year: String?
@@ -24,8 +16,11 @@ struct Movie: Decodable {
     let posterImage: String?
     let overview: String?
     let language: String?
+    let genres: [Genre]
+    let runtime: Int
+    
     private enum CodingKeys: String, CodingKey {
-        case title, overview, id
+        case title, overview, id, genres, runtime
         case year = "release_date"
         case rate = "vote_average"
         case posterImage = "poster_path"
@@ -33,4 +28,7 @@ struct Movie: Decodable {
     }
 }
 
+struct Genre: Decodable {
+    let name: String
+}
 

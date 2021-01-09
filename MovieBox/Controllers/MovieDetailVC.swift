@@ -13,8 +13,12 @@ class MovieDetailVC: UIViewController {
     //MARK: Properties
     
     var selectedMovie: Movie!
+    var  movieItem: MovieItem!
+    
+    var movieID: Int = 0
     private var castVM = CastViewModel()
     private var similarMovieVM = RecommondedMovieViewModel()
+    private var movieItemVM = MovieItemViewModel()
 
     @IBOutlet weak var posterImg: UIImageView!
     @IBOutlet weak var lblMoviename: UILabel!
@@ -23,6 +27,8 @@ class MovieDetailVC: UIViewController {
     @IBOutlet weak var lblReleaseDate: UILabel!
     @IBOutlet weak var lblCast: UILabel!
     @IBOutlet weak var lblSimilarMovie: UILabel!
+    @IBOutlet weak var lblGenres: UILabel!
+    @IBOutlet weak var lblMovieTime: UILabel!
     
     @IBOutlet weak var castCollectionView: UICollectionView!
     @IBOutlet weak var similarmvCollectionView: UICollectionView!
@@ -36,10 +42,13 @@ class MovieDetailVC: UIViewController {
     
     func setupUI() {
         self.title = "Explore"
+        
+        self.fetchMovie()
+        
         self.lblMoviename.text = selectedMovie?.title
         self.lblReleaseDate.text = Helper.app.convertDateFormater(selectedMovie?.year)
-        self.lblLanguage.text = "Language: \(selectedMovie?.language ?? "Language: NA")"
-        getDisplayImage()
+        self.lblLanguage.text = "\(selectedMovie?.language ?? "NA")"
+        getDisplayImage(withPosterPath: selectedMovie?.posterImage)
         
         castCollectionView.delegate = self
         similarmvCollectionView.delegate = self
@@ -49,8 +58,19 @@ class MovieDetailVC: UIViewController {
     }
     
     //MARK: Helper Methods
+    private func fetchMovie() {
+        movieItemVM.fetchMovieItem(fromMovieId: movieID) { [weak self] in
+            self?.lblsinopsis.text = self?.movieItemVM.synopsis
+            self?.lblGenres.text = self?.movieItemVM.genre
+            self?.lblMovieTime.text = self?.movieItemVM.movieTime
+            self?.lblMoviename.text = self?.movieItemVM.title
+            self?.lblReleaseDate.text = Helper.app.convertDateFormater(self?.movieItemVM.releasedate) 
+            self?.getDisplayImage(withPosterPath: self?.movieItemVM.posterPath)
+        }
+    }
+    
     private func fetchCastData() {
-        castVM.fetchCastData(forMovieId: selectedMovie.id) { [weak self] in
+        castVM.fetchCastData(forMovieId: movieID) { [weak self] in
             if self?.castVM.total == 0 {
                 self?.lblCast.isHidden = true
             }
@@ -60,7 +80,7 @@ class MovieDetailVC: UIViewController {
     }
     
     private func fetchSimilarMoviesData() {
-        similarMovieVM.fetchSimilarMoviesData(forMovieId: selectedMovie.id) { [weak self] in
+        similarMovieVM.fetchSimilarMoviesData(forMovieId: movieID) { [weak self] in
             if self?.similarMovieVM.total == 0 {
                 self?.lblSimilarMovie.isHidden = true
             }
@@ -71,17 +91,19 @@ class MovieDetailVC: UIViewController {
     
     // MARK: - Web Service Call
     
-    private func getDisplayImage(){
-        guard let posterString = selectedMovie?.posterImage else {return}
-        let urlString = "https://image.tmdb.org/t/p/w300" + posterString
-        guard let posterImageURL = URL(string: urlString) else {
-            self.posterImg.image = UIImage(named: "noImageAvailable")
-            return
+    private func getDisplayImage(withPosterPath posterString: String?){
+        if let posterString = posterString, posterString.count > 0 {
+            let urlString = "https://image.tmdb.org/t/p/w300" + posterString
+            guard let posterImageURL = URL(string: urlString) else {
+                self.posterImg.image = UIImage(named: "noImageAvailable")
+                return
+            }
+            
+            // Before we download the image we remove old image
+            self.posterImg.image = nil
+            getImageDataFrom(url: posterImageURL)
         }
         
-        // Before we download the image we remove old image
-        self.posterImg.image = nil
-        getImageDataFrom(url: posterImageURL)
     }
     
     private func getImageDataFrom(url: URL) {
@@ -133,6 +155,13 @@ extension  MovieDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
             cell.updateConstraintsIfNeeded()
             return cell
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let similarMovie = similarMovieVM.cellForRowAt(indexPath: indexPath)
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MovieDetailVC") as! MovieDetailVC
+        viewController.movieID = similarMovie.id
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
 }

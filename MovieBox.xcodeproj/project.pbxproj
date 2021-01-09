@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9811877625A8EE11002F4C18 /* MovieItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811877525A8EE11002F4C18 /* MovieItem.swift */; };
+		9811877825A95C30002F4C18 /* MovieItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811877725A95C30002F4C18 /* MovieItemViewModel.swift */; };
 		981AB6CB25A814F800E98CAF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981AB6CA25A814F800E98CAF /* Constants.swift */; };
 		981AB6CD25A815BB00E98CAF /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981AB6CC25A815BB00E98CAF /* Protocol.swift */; };
 		98467CC625A5F855002AF9CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98467CC525A5F855002AF9CC /* AppDelegate.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9811877525A8EE11002F4C18 /* MovieItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieItem.swift; sourceTree = "<group>"; };
+		9811877725A95C30002F4C18 /* MovieItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieItemViewModel.swift; sourceTree = "<group>"; };
 		981AB6CA25A814F800E98CAF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		981AB6CC25A815BB00E98CAF /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		98467CC225A5F855002AF9CC /* MovieBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +138,7 @@
 				98467CFA25A7367C002AF9CC /* Casts.swift */,
 				98467D0025A744DC002AF9CC /* RecommondedMovies.swift */,
 				98467D0225A744EA002AF9CC /* Videos.swift */,
+				9811877525A8EE11002F4C18 /* MovieItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -164,6 +169,7 @@
 				98467CFC25A73761002AF9CC /* CastViewModel.swift */,
 				98467D0425A745E2002AF9CC /* RecommondedMovieViewModel.swift */,
 				98467D0625A745F5002AF9CC /* VideoViewModel.swift */,
+				9811877725A95C30002F4C18 /* MovieItemViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -258,11 +264,13 @@
 				98467CF925A725CA002AF9CC /* Helper.swift in Sources */,
 				98467CFB25A7367C002AF9CC /* Casts.swift in Sources */,
 				98467D0725A745F5002AF9CC /* VideoViewModel.swift in Sources */,
+				9811877825A95C30002F4C18 /* MovieItemViewModel.swift in Sources */,
 				981AB6CD25A815BB00E98CAF /* Protocol.swift in Sources */,
 				98467D0325A744EA002AF9CC /* Videos.swift in Sources */,
 				98B23DE825A82294002C18B4 /* SearchVCNavController.swift in Sources */,
 				98467CE325A62D1F002AF9CC /* Extensions.swift in Sources */,
 				98467CE925A6D155002AF9CC /* MovieViewModel.swift in Sources */,
+				9811877625A8EE11002F4C18 /* MovieItem.swift in Sources */,
 				98467D0525A745E2002AF9CC /* RecommondedMovieViewModel.swift in Sources */,
 				98467CF325A720AE002AF9CC /* CastCollectionCell.swift in Sources */,
 				98467CE125A61DF0002AF9CC /* MovieItemCell.swift in Sources */,

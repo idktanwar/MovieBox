@@ -118,6 +118,7 @@ extension MovieListController: UITableViewDelegate, UITableViewDataSource {
         let movie = viewModel.cellForRowAt(indexPath: indexPath)
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MovieDetailVC") as! MovieDetailVC
         viewController.selectedMovie = movie
+        viewController.movieID = movie.id
         self.navigationController?.pushViewController(viewController, animated: true)
         
     }
@@ -148,8 +149,6 @@ extension MovieListController: UIScrollViewDelegate {
 
                 }
             }
-
-
     }
 
 }

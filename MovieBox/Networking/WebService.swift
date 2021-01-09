@@ -18,7 +18,6 @@ class WebService {
         
         guard let url = URL(string: newMoviesURL) else {return}
         
-        // Create URL Session - work on the background
         dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             // Handle Error
@@ -53,7 +52,6 @@ class WebService {
     
     func getImageDataFrom(url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
         
-        // Create URL Session - work on the background
         dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             // Handle Error
@@ -84,7 +82,6 @@ class WebService {
         
         guard let url = URL(string: castDataURL) else {return}
         
-        // Create URL Session - work on the background
         dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             // Handle Error
@@ -161,7 +158,6 @@ class WebService {
         
         guard let url = URL(string: videoDataURL) else {return}
         
-        // Create URL Session - work on the background
         dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             // Handle Error
@@ -201,7 +197,6 @@ class WebService {
         
         guard let url = URL(string: searchMoviesURL) else {return}
         
-        // Create URL Session - work on the background
         dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             // Handle Error
@@ -220,6 +215,44 @@ class WebService {
                 // Parse the data
                 let decoder = JSONDecoder()
                 let jsonData = try decoder.decode(MoviesData.self, from: data)
+                
+                // Back to the main thread
+                DispatchQueue.main.async {
+                    completion(.success(jsonData))
+                }
+            } catch let error {
+                completion(.failure(error))
+            }
+            
+        }
+        dataTask?.resume()
+    }
+    
+    
+    func getMovieItem(fromMovieId id: Int, completion: @escaping (Result<MovieItem, Error>) -> Void) {
+        
+        let movieurl = "https://api.themoviedb.org/3/movie/\(id)?api_key=\(TMDB_API_KEY)"
+        
+        guard let url = URL(string: movieurl) else {return}
+        
+        dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            // Handle Error
+            if let error = error {
+                completion(.failure(error))
+                print("DataTask error: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let data = data else {
+                // Handle Empty Data
+                return
+            }
+            
+            do {
+                // Parse the data
+                let decoder = JSONDecoder()
+                let jsonData = try decoder.decode(MovieItem.self, from: data)
                 
                 // Back to the main thread
                 DispatchQueue.main.async {
