@@ -47,7 +47,7 @@ class MovieDetailVC: UIViewController {
         
         self.lblMoviename.text = selectedMovie?.title
         self.lblReleaseDate.text = Helper.app.convertDateFormater(selectedMovie?.year)
-        self.lblLanguage.text = "\(selectedMovie?.language ?? "NA")"
+        self.lblLanguage.text = "\(selectedMovie?.language ?? "")"
         getDisplayImage(withPosterPath: selectedMovie?.posterImage)
         
         castCollectionView.delegate = self
@@ -158,10 +158,12 @@ extension  MovieDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let similarMovie = similarMovieVM.cellForRowAt(indexPath: indexPath)
-        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MovieDetailVC") as! MovieDetailVC
-        viewController.movieID = similarMovie.id
-        self.navigationController?.pushViewController(viewController, animated: true)
+        if  collectionView == self.similarmvCollectionView {
+            let similarMovie = similarMovieVM.cellForRowAt(indexPath: indexPath)
+            let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MovieDetailVC") as! MovieDetailVC
+            viewController.movieID = similarMovie.id
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 
 }

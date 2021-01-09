@@ -97,11 +97,9 @@ class WebService {
             }
             
             do {
-                // Parse the data
                 let decoder = JSONDecoder()
                 let jsonData = try decoder.decode(CastsData.self, from: data)
                 
-                // Back to the main thread
                 DispatchQueue.main.async {
                     completion(.success(jsonData))
                 }
@@ -135,11 +133,9 @@ class WebService {
             }
             
             do {
-                // Parse the data
                 let decoder = JSONDecoder()
                 let jsonData = try decoder.decode(RecommendedMoiveData.self, from: data)
                 
-                // Back to the main thread
                 DispatchQueue.main.async {
                     completion(.success(jsonData))
                 }
@@ -173,11 +169,9 @@ class WebService {
             }
             
             do {
-                // Parse the data
                 let decoder = JSONDecoder()
                 let jsonData = try decoder.decode(VideoData.self, from: data)
                 
-                // Back to the main thread
                 DispatchQueue.main.async {
                     completion(.success(jsonData))
                 }
@@ -212,11 +206,9 @@ class WebService {
             }
             
             do {
-                // Parse the data
                 let decoder = JSONDecoder()
                 let jsonData = try decoder.decode(MoviesData.self, from: data)
                 
-                // Back to the main thread
                 DispatchQueue.main.async {
                     completion(.success(jsonData))
                 }
@@ -250,11 +242,9 @@ class WebService {
             }
             
             do {
-                // Parse the data
                 let decoder = JSONDecoder()
                 let jsonData = try decoder.decode(MovieItem.self, from: data)
                 
-                // Back to the main thread
                 DispatchQueue.main.async {
                     completion(.success(jsonData))
                 }
