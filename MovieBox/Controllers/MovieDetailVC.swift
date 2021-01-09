@@ -63,6 +63,7 @@ class MovieDetailVC: UIViewController {
                 self?.lblGenres.text = movieItemViewModel.genre
                 self?.lblMovieTime.text = movieItemViewModel.movieTime
                 self?.lblMoviename.text = movieItemViewModel.title
+                self?.lblLanguage.text = movieItemViewModel.language
                 self?.lblReleaseDate.text = Helper.app.convertDateFormater(movieItemViewModel.releasedate)
                 self?.getDisplayImage(withPosterPath: movieItemViewModel.posterPath)
             }
