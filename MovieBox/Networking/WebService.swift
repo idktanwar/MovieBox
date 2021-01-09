@@ -220,16 +220,10 @@ class WebService {
         dataTask?.resume()
     }
     
-    
-    func getMovieItem(fromMovieId id: Int, completion: @escaping (Result<MovieItem, Error>) -> Void) {
-        
-        let movieurl = "https://api.themoviedb.org/3/movie/\(id)?api_key=\(TMDB_API_KEY)"
-        
-        guard let url = URL(string: movieurl) else {return}
+    func getMovieItem(url: URL, completion: @escaping (Result<MovieItem, Error>) -> Void) {
         
         dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
-            // Handle Error
             if let error = error {
                 completion(.failure(error))
                 print("DataTask error: \(error.localizedDescription)")

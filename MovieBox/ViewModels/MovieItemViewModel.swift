@@ -11,11 +11,17 @@ import Foundation
 class MovieItemViewModel {
     
     private var movieItem: MovieItem!
-
     private var apiService = WebService()
+    let resourceURL: URL
 
-    func fetchMovieItem(fromMovieId id: Int,completion: @escaping () -> ()){
-        apiService.getMovieItem(fromMovieId: id) { [weak self] (result) in
+    init(movieID: Int) {
+        let resourceString = "https://api.themoviedb.org/3/movie/\(movieID)?api_key=\(TMDB_API_KEY)"
+        guard let resourceURL = URL(string: resourceString) else {fatalError()}
+        self.resourceURL = resourceURL
+    }
+    
+    func fetchMovieItem(url: URL,completion: @escaping () -> ()){
+        apiService.getMovieItem(url: url) { [weak self] (result) in
             switch result {
             case .success(let movieItem):
                 self?.movieItem = movieItem

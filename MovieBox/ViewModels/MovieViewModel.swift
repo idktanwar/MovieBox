@@ -14,34 +14,31 @@ class MovieViewModel {
     private var newMovies = [Movie]()
     
     func fetchNewMoviesData(withoffset offset: Int, limit: Int, completion: @escaping () -> ()) {
-        
-        // weak self - prevent retain cycles
         apiService.getNewMoviesData(withoffset: offset, limit: limit) {
             [weak self] (result) in
             
             switch result {
-            case .success(let listOf):
-                self?.newMovies = listOf.movies
-                completion()
-            case .failure(let error):
-                // Something is wrong with the JSON
-                print("Error processing json data: \(error)")
+                case .success(let listOf):
+                    self?.newMovies = listOf.movies
+                    completion()
+                case .failure(let error):
+                    // Something is wrong with the JSON
+                    print("Error processing json data: \(error)")
             }
         }
     }
     
     func searchMovie(withQuery query: String, completion: @escaping () -> ()) {
-        // weak self - prevent retain cycles
         apiService.searchMovie(withquery: query) {
             [weak self] (result) in
             
             switch result {
-            case .success(let listOf):
-                self?.newMovies = listOf.movies
-                completion()
-            case .failure(let error):
-                // Something is wrong with the JSON
-                print("Error processing json data: \(error)")
+                case .success(let listOf):
+                    self?.newMovies = listOf.movies
+                    completion()
+                case .failure(let error):
+                    // Something is wrong with the JSON
+                    print("Error processing json data: \(error)")
             }
         }
     }

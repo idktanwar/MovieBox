@@ -11,14 +11,10 @@ import UIKit
 class MovieDetailVC: UIViewController {
 
     //MARK: Properties
-    
     var selectedMovie: Movie!
-    var  movieItem: MovieItem!
-    
     var movieID: Int = 0
     private var castVM = CastViewModel()
     private var similarMovieVM = RecommondedMovieViewModel()
-    private var movieItemVM = MovieItemViewModel()
 
     @IBOutlet weak var posterImg: UIImageView!
     @IBOutlet weak var lblMoviename: UILabel!
@@ -59,13 +55,17 @@ class MovieDetailVC: UIViewController {
     
     //MARK: Helper Methods
     private func fetchMovie() {
-        movieItemVM.fetchMovieItem(fromMovieId: movieID) { [weak self] in
-            self?.lblsinopsis.text = self?.movieItemVM.synopsis
-            self?.lblGenres.text = self?.movieItemVM.genre
-            self?.lblMovieTime.text = self?.movieItemVM.movieTime
-            self?.lblMoviename.text = self?.movieItemVM.title
-            self?.lblReleaseDate.text = Helper.app.convertDateFormater(self?.movieItemVM.releasedate) 
-            self?.getDisplayImage(withPosterPath: self?.movieItemVM.posterPath)
+        let movieItemViewModel = MovieItemViewModel(movieID: movieID)
+        movieItemViewModel.fetchMovieItem(url: movieItemViewModel.resourceURL) {
+            [weak self] in
+            DispatchQueue.main.async {
+                self?.lblsinopsis.text = movieItemViewModel.synopsis
+                self?.lblGenres.text = movieItemViewModel.genre
+                self?.lblMovieTime.text = movieItemViewModel.movieTime
+                self?.lblMoviename.text = movieItemViewModel.title
+                self?.lblReleaseDate.text = Helper.app.convertDateFormater(movieItemViewModel.releasedate)
+                self?.getDisplayImage(withPosterPath: movieItemViewModel.posterPath)
+            }
         }
     }
     
